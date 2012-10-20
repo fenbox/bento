@@ -20,7 +20,7 @@ $column-width: $container-width / $column;  //计算每个栅格的宽度
 //
 
 .container {
-    width: $container-width;
+    max-width: $container-width;
     @if $centered == true {
         margin: 0 auto;
     }
