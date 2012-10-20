@@ -1,0 +1,48 @@
+// 重置盒模型
+.border-box {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+};
+
+
+//
+// 栅格系统配置
+//
+$column: 12;  // 栅格总数
+$inner-width: 10px;  // 栅格内边距
+$container-width: 100%;  // 布局宽度, 可以时百分比，也可以时像素值
+$centered: true; // 是否居中 true|false
+$column-width: $container-width / $column;  //计算每个栅格的宽度
+
+//
+// 栅格生成器
+//
+
+.container {
+    width: $container-width;
+    @if $centered == true {
+        margin: 0 auto;
+    }
+}
+// $n 表示栅格数量
+@mixin grid($n:0) {
+    @extend .border-box;
+    @if $n {
+        width: $column-width * $n;
+    }
+    display: inline;
+    float: left;
+    padding: 0 $inner-width;
+}
+
+// 左侧缩进
+@mixin push($offset:1) {
+    margin-left: $column-width * $offset;
+}
+
+// 右侧牵引
+@mixin pull($offset:1) {
+    margin-right: $column-width * $offset;
+}
+
