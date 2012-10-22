@@ -10,30 +10,37 @@
 // 栅格系统配置
 //
 $column: 12;  // 栅格总数
-$inner-width: 10px;  // 栅格内边距
-$container-width: 100%;  // 布局宽度, 可以时百分比，也可以时像素值
-$centered: true; // 是否居中 true|false
-$column-width: $container-width / $column;  //计算每个栅格的宽度
+$column-width: 100% / $column;  //计算每个栅格的宽度
+
 
 //
-// 栅格生成器
+// 容器生成
 //
-
-.container {
-    max-width: $container-width;
-    @if $centered == true {
-        margin: 0 auto;
+// $side 左右边距，auto|[number]
+@mixin container($width:100%, $side:null) {
+    max-width: $width;
+    @if $side {
+        margin-left: $side;
+        margin-right: $side;
     }
 }
+
+
+//
+// 栅格生成
+//
+
 // $n 表示栅格数量
-@mixin grid($n:0) {
+// $inner-width 为左右内边距
+@mixin grid($n:1, $inner-width:null) {
     @extend .border-box;
-    @if $n {
-        width: $column-width * $n;
-    }
+    width: $column-width * $n;
     display: inline;
     float: left;
-    padding: 0 $inner-width;
+    @if $inner-width {
+        padding-left: $inner-width;
+        padding-right: $inner-width;
+    }
 }
 
 // 左侧缩进

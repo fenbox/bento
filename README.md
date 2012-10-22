@@ -1,4 +1,4 @@
-bento
+Bento CSS Framework
 =====
 
 一款极具悟性的栅格框架，支持 Firefox, WebKit, Opera, IE8+
