@@ -1,9 +1,9 @@
 // 重置盒模型
 .border-box {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-};
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
 
 
 //
@@ -16,13 +16,13 @@ $column-width: 100% / $column;  //计算每个栅格的宽度
 //
 // 容器生成
 //
-// $side 左右边距，auto|[number]
+// $side 左右边距，"auto" 时居中显示
 @mixin container($width:100%, $side:null) {
-    max-width: $width;
-    @if $side {
-        margin-left: $side;
-        margin-right: $side;
-    }
+  max-width: $width;
+  @if $side {
+    margin-left: $side;
+    margin-right: $side;
+  }
 }
 
 
@@ -33,23 +33,22 @@ $column-width: 100% / $column;  //计算每个栅格的宽度
 // $n 表示栅格数量
 // $inner-width 为左右内边距
 @mixin grid($n:1, $inner-width:null) {
-    @extend .border-box;
-    width: $column-width * $n;
-    display: inline;
-    float: left;
-    @if $inner-width {
-        padding-left: $inner-width;
-        padding-right: $inner-width;
-    }
+  @extend .border-box;
+  width: $column-width * $n;
+  display: inline;
+  float: left;
+  @if $inner-width {
+    padding-left: $inner-width;
+    padding-right: $inner-width;
+  }
 }
 
 // 左侧缩进
 @mixin push($offset:1) {
-    margin-left: $column-width * $offset;
+  margin-left: $column-width * $offset;
 }
 
 // 右侧牵引
 @mixin pull($offset:1) {
-    margin-right: $column-width * $offset;
+  margin-right: $column-width * $offset;
 }
-
